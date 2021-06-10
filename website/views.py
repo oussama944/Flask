@@ -1,16 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint,render_template
 
 views=Blueprint('views',__name__);
 
 @views.route('/')
 def home():
-    return"<h1>Test<h1>" 
+    return render_template("home.html")
 
-@views.route('/logout')
-def logout():
-    return"<h1>Testeeeee<h1>" 
 
-@views.route('/')
-def sign_up():
-    return"<h1>Tesxxxt<h1>" 
 
