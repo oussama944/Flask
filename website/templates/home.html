@@ -3,5 +3,22 @@
 
  {%block content%}         
 <h1 class="display-4 fw-normal">Home page</h1>
-<p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap .</p>
+<p class="fs-5 text-muted">
+    <form method='POST'>
+        <textarea name="note" id="note" class="form-control"></textarea>
+        <div >
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </div>
+    </form>
+</p>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
 {%endblock%}

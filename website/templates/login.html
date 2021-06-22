@@ -4,5 +4,24 @@
  {%block content%}         
 <h1 class="display-4 fw-normal">Login</h1>
 <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap .</p>
+
+<form method="POST">
+
+<div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+</div>
+
+
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+</div>
+
+<br/>
+<button type="submit" class="btn btn-primary"> Login</button>
+
+</form>
+
 {{text}}
 {%endblock%}

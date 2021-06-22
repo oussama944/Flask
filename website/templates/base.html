@@ -59,22 +59,49 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+               
                 <ul class="navbar-nav text-align: center">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" id="home"href="/">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="logout"href="/logout">Logout</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item active">
                         <a class="nav-link" id="login"href="/login">Login</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link"  id="signUp"href="/sign-up">Sign Up</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" id="logout"href="/logout">Logout</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" id="home"href="/">Home</a>
-                    </li>
+                    {%endif%}
                 </ul>
             </div>
         </nav>
+        {% with messages=get_flashed_messages(with_categories=true)%}
+        {% if messages %}
+          {% for category,message in messages %}
+
+          {% if category=='error'%}
+          <!-- If he does not fill out the registration form correctly-->
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
            
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             {%block content%}
